@@ -3,16 +3,6 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.tag {
-  border: 1px solid #e9e9e9;
-  padding: 6px 10px;
-  border-radius: 16px;
-  cursor: pointer;
-  &.activeTag {
-    border: 1px solid #333;
-    background: #e9e9e9;
-    color: #333;
-  }
-}

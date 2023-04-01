@@ -4,15 +4,22 @@ import { Storage } from 'shared';
 
 interface IState {
   notes: INote[];
+  tags: string[];
 }
 
 const initialState: IState = {
   notes: Storage.getItem<INote[]>('notes') ?? [],
+  tags: Storage.getItem<string[]>('tags') ?? [],
 };
 
 const setNotes = (state: IState, notes: INote[]): void => {
   state.notes = notes;
   Storage.setItem('notes', state.notes);
+};
+
+const setTags = (state: IState, tags: string[]): void => {
+  state.tags = tags;
+  Storage.setItem('tags', state.tags);
 };
 
 const noteSlice = createSlice({
@@ -23,7 +30,7 @@ const noteSlice = createSlice({
       setNotes(state, action.payload);
     },
     addNoteAC: (state: IState, action: PayloadAction<INote>) => {
-      setNotes(state, [...state.notes, action.payload]);
+      setNotes(state, [action.payload, ...state.notes]);
     },
     editNoteAC: (state: IState, action: PayloadAction<INote>) => {
       setNotes(
@@ -37,6 +44,18 @@ const noteSlice = createSlice({
       setNotes(
         state,
         state.notes.filter((note) => note.id !== action.payload)
+      );
+    },
+    setTagsAC: (state: IState, action: PayloadAction<string[]>) => {
+      setTags(state, action.payload);
+    },
+    addTagAC: (state: IState, action: PayloadAction<string>) => {
+      setTags(state, [action.payload, ...state.tags]);
+    },
+    deleteTagAC: (state: IState, action: PayloadAction<string>) => {
+      setTags(
+        state,
+        state.tags.filter((tag) => tag !== action.payload)
       );
     },
   },

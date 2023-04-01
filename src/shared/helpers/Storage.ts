@@ -1,5 +1,6 @@
 interface IKeys {
   notes: 'notes';
+  tags: 'tags';
 }
 
 class Storage {
@@ -8,6 +9,7 @@ class Storage {
   constructor() {
     this.LSKeys = {
       notes: 'notes',
+      tags: 'tags',
     };
   }
 

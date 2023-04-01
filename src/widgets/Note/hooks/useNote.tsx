@@ -5,7 +5,7 @@ import { INote } from '../types';
 // in this hooks we create request to backend and use response for redux (state)
 
 const useNote = () => {
-  const { notes } = useTypedSelector((state) => state.notes);
+  const { notes, tags: otherTags } = useTypedSelector((state) => state.notes);
   const { action } = useActions();
 
   const onAddNote = (newNote: INote): void => {
@@ -21,11 +21,22 @@ const useNote = () => {
     action.deleteNoteAC(id);
   };
 
+  const onAddTag = (newTag: string): void => {
+    action.addTagAC(newTag);
+  };
+
+  const onDeleteTag = (tag: string): void => {
+    action.deleteTagAC(tag);
+  };
+
   return {
     notes,
+    otherTags,
     onAddNote,
+    onAddTag,
     onEditNote,
     onDeleteNote,
+    onDeleteTag,
   };
 };
 export default useNote;

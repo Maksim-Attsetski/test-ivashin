@@ -12,6 +12,8 @@ const CreateNoteForm: FC = () => {
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (text.length === 0) return;
+
     const newNote: INote = {
       id: Math.random(),
       text,

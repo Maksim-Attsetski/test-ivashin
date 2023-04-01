@@ -4,24 +4,28 @@ import NoteItem from '../NoteItem';
 
 import s from './NoteList.module.scss';
 import { Title } from 'UI';
+import TagsList from '../TagsList';
 
 const NoteList: FC = () => {
-  const { notes } = useNote();
+  const { notes, otherTags } = useNote();
   const [activeTags, setActiveTags] = useState<string[]>([]);
 
   const tags: string[] = useMemo(() => {
     const uniqueTags: string[] = [];
     const allTags = notes.reduce(
       (prev: string[], cur: INote) => [...prev, ...cur.tags],
-      []
+      otherTags
     );
 
     new Set(allTags).forEach((str) => {
       uniqueTags.push(str);
     });
 
+    console.log('allTags', allTags);
+    console.log('otherTags', otherTags);
+
     return uniqueTags;
-  }, [notes]);
+  }, [notes, otherTags]);
 
   const filteredNotes = useMemo(
     () =>
@@ -39,21 +43,12 @@ const NoteList: FC = () => {
 
   return (
     <div>
-      <div className={s.noteContainer}>
-        <Title text='Tags: ' isSub />
-        <br />
-        {tags.map((tag) => (
-          <div
-            key={tag}
-            className={[s.tag, activeTags.includes(tag) && s.activeTag].join(
-              ' '
-            )}
-            onClick={() => onClickTag(tag)}
-          >
-            {tag}
-          </div>
-        ))}
-      </div>
+      <TagsList
+        activeTags={activeTags}
+        setActiveTags={setActiveTags}
+        onClickTag={onClickTag}
+        tags={tags}
+      />
       <br />
       <Title text='Notes: ' isSub />
       <br />

@@ -39,6 +39,7 @@ const NoteItem: FC<IProps> = ({ note }) => {
       <Button onClick={onClickEdit}>{isEdit ? 'Save' : 'Edit'}</Button>
       <Button onClick={() => onDeleteNote(note.id)}>Delete</Button>
       <br />
+      <br />
       <div>{DateHelper.getTimeString(note.createdAt)}</div>
     </div>
   );

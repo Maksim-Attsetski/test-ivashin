@@ -20,7 +20,7 @@ interface IProps {
     HTMLTextAreaElement
   >;
   className?: string;
-  setText: Dispatch<SetStateAction<string>>;
+  setText: Dispatch<SetStateAction<string>> | ((val: string) => void);
   text: string;
   multiLines?: boolean;
 }

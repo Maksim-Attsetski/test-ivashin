@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { INote } from './types';
+import { Storage } from 'shared';
 
 interface IState {
   notes: INote[];
@@ -11,7 +12,7 @@ const initialState: IState = {
 
 const setNotes = (state: IState, notes: INote[]): void => {
   state.notes = notes;
-  localStorage.setItem('notes', JSON.stringify(state.notes));
+  Storage.setItem('notes', state.notes);
 };
 
 const noteSlice = createSlice({

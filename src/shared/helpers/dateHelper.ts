@@ -34,4 +34,5 @@ class DateHelper {
   };
 }
 
-export default new DateHelper();
+const dateHelper = new DateHelper();
+export default dateHelper;

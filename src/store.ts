@@ -1,6 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({});
+import { noteReducer } from 'widgets/Note';
+
+const rootReducer = combineReducers({
+  notes: noteReducer,
+});
 
 export const store = configureStore({
   reducer: rootReducer,

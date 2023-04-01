@@ -7,7 +7,7 @@ interface IState {
 }
 
 const initialState: IState = {
-  notes: [],
+  notes: Storage.getItem<INote[]>('notes') ?? [],
 };
 
 const setNotes = (state: IState, notes: INote[]): void => {

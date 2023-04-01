@@ -10,6 +10,7 @@ const Home: FC = () => {
         <h3>Notes:</h3>
         <br />
         <CreateNoteForm />
+        <br />
         <NoteList />
       </div>
     </div>

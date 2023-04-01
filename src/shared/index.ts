@@ -1,3 +1,4 @@
 import Storage from './helpers/Storage';
+import DateHelper from './helpers/dateHelper';
 
-export { Storage };
+export { Storage, DateHelper };

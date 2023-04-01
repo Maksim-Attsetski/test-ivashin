@@ -1,12 +1,17 @@
 import React, { FC, memo } from 'react';
-import { NoteList } from 'widgets/Note';
+import { CreateNoteForm, NoteList } from 'widgets/Note';
 
 const Home: FC = () => {
   return (
     <div>
-      <h3>Notes:</h3>
-      <br />
-      <NoteList />
+      <div className='container'>
+        <br />
+        <br />
+        <h3>Notes:</h3>
+        <br />
+        <CreateNoteForm />
+        <NoteList />
+      </div>
     </div>
   );
 };

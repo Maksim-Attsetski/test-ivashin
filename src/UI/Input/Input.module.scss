@@ -2,4 +2,10 @@
 .input {
   border: none;
   border-radius: 8px;
+  padding: 7px 15px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 70px;
 }

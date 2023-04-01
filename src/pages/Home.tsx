@@ -1,3 +1,4 @@
+import { Title } from 'UI';
 import React, { FC, memo } from 'react';
 import { CreateNoteForm, NoteList } from 'widgets/Note';
 
@@ -7,9 +8,11 @@ const Home: FC = () => {
       <div className='container'>
         <br />
         <br />
-        <h3>Notes:</h3>
+        <Title text='Create the most useful notes!' />
         <br />
         <CreateNoteForm />
+        <br />
+        <hr />
         <br />
         <NoteList />
       </div>

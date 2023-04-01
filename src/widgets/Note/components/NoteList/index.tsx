@@ -3,6 +3,7 @@ import { INote, useNote } from 'widgets/Note';
 import NoteItem from '../NoteItem';
 
 import s from './NoteList.module.scss';
+import { Title } from 'UI';
 
 const NoteList: FC = () => {
   const { notes } = useNote();
@@ -39,8 +40,11 @@ const NoteList: FC = () => {
   return (
     <div>
       <div className={s.noteContainer}>
+        <Title text='Tags: ' isSub />
+        <br />
         {tags.map((tag) => (
           <div
+            key={tag}
             className={[s.tag, activeTags.includes(tag) && s.activeTag].join(
               ' '
             )}
@@ -50,6 +54,8 @@ const NoteList: FC = () => {
           </div>
         ))}
       </div>
+      <br />
+      <Title text='Notes: ' isSub />
       <br />
       <div className={s.noteContainer}>
         {filteredNotes.map((note) => (

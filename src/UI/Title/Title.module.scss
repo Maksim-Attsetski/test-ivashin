@@ -1,0 +1,10 @@
+
+.title {
+  font-size: calc(3vmin + 20px);
+  font-weight: 600;
+  text-align: center;
+  &.sub {
+    font-size: calc(3vmin + 12px);
+    text-align: left;
+  }
+}
